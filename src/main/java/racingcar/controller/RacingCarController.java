@@ -11,7 +11,7 @@ public class RacingCarController {
     }
 
     public void startGame() {
-        racingCarService.initGame();
+        racingCarService.initCarNames();
         racingCarService.playGame();
         findWinners();
     }

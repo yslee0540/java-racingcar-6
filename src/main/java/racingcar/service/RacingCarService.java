@@ -8,24 +8,19 @@ import racingcar.view.OutputView;
 
 public class RacingCarService {
     private Cars cars;
-    private int attemptCount;
 
-    public void initGame() {
-        initCarNames();
-        initAttemptCount();
-    }
-
-    private void initCarNames() {
+    public void initCarNames() {
         String name = InputView.readCarNames();
         cars = new Cars(NameParser.stringToList(name));
     }
 
-    private void initAttemptCount() {
+    private int initAttemptCount() {
         String count = InputView.readAttemptCount();
-        attemptCount = NumberValidator.stringToInt(count);
+        return NumberValidator.stringToInt(count);
     }
 
     public void playGame() {
+        int attemptCount = initAttemptCount();
         OutputView.printGameResultMessage();
         for (int i = 0; i < attemptCount; i++) {
             OutputView.printGameResult(cars.getRoundResult());

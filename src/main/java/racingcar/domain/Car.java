@@ -27,4 +27,7 @@ public class Car {
             position++;
         }
     }
+    public String showPosition() {
+        return "-".repeat(Math.max(0, getPosition()));
+    }
 }

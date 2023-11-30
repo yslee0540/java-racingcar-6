@@ -14,13 +14,9 @@ public class OutputView {
     public static void printGameResult(List<Car> cars) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Car car : cars) {
-            stringBuilder.append(car.getName() + " : " + getPosition(car) + "\n");
+            stringBuilder.append(car.getName() + " : " + car.showPosition() + "\n");
         }
         System.out.println(stringBuilder);
-    }
-
-    private static String getPosition(Car car) {
-        return "-".repeat(Math.max(0, car.getPosition()));
     }
 
     public static void printWinners(String winners) {
