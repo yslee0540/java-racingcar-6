@@ -17,6 +17,6 @@ public class RacingCarController {
     }
 
     private void findWinners() {
-        OutputView.printWinners(String.join(", ", racingCarService.getWinners()));
+        OutputView.printWinners(racingCarService.getWinners());
     }
 }
