@@ -43,18 +43,36 @@ public class Cars {
         }
     }
 
-    public List<String> getCarNamesByMaxPosition() {
-        int maxPosition = getMaxPosition();
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .toList();
+//    public List<String> getCarNamesByMaxPosition() {
+//        int maxPosition = getMaxPosition();
+//        return cars.stream()
+//                .filter(car -> car.getPosition() == maxPosition)
+//                .map(Car::getName)
+//                .toList();
+//    }
+//
+//    private int getMaxPosition() {
+//        return cars.stream()
+//                .mapToInt(Car::getPosition)
+//                .max()
+//                .orElseThrow(IllegalArgumentException::new);
+//    }
+
+    public List<String> findWinners() {
+        final Car maxPositionCar = findMaxPositionCar();
+        return findSamePositionCars(maxPositionCar);
     }
 
-    private int getMaxPosition() {
+    private Car findMaxPositionCar() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
-                .max()
-                .orElseThrow(IllegalArgumentException::new);
+                .max(Car::compareTo)
+                .orElseThrow(() -> new IllegalArgumentException("차량 리스트가 비었습니다."));
+    }
+
+    private List<String> findSamePositionCars(Car maxPositionCar) {
+        return cars.stream()
+                .filter(maxPositionCar::isSamePosition)
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

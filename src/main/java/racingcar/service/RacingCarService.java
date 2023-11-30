@@ -28,6 +28,6 @@ public class RacingCarService {
     }
 
     public String getWinners() {
-        return String.join(", ", cars.getCarNamesByMaxPosition());
+        return String.join(", ", cars.findWinners());
     }
 }

@@ -27,7 +27,16 @@ public class Car {
             position++;
         }
     }
+
     public String showPosition() {
         return "-".repeat(Math.max(0, getPosition()));
+    }
+
+    public boolean isSamePosition(Car other) {
+        return other.position == this.position;
+    }
+
+    public int compareTo(Car other) {
+        return this.position - other.position;
     }
 }
